@@ -30,7 +30,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	// Limpa a classe da janela
 	ZeroMemory(&wc, sizeof(WNDCLASSEX));
 
-	// Preenche a estrutura com a informção necessária
+	// Preenche a estrutura com a informação necessária
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.lpfnWndProc = WindowProc;
@@ -44,20 +44,20 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	// Cria a janela e obtem seu handle
 	hWnd = CreateWindowEx(NULL,
-		L"WindowClass1",         // Nome da classe da janela
-		L"Hello World in Win32", // Título da janela
-		WS_OVERLAPPEDWINDOW,     // Estilo da janela
-		300,                     // Posição X
-		300,                     // Posição Y
-		500,                     // Largura da janela
-		400,                     // Altura da janela
-		NULL,                    // Não tem janela-pai, NULL
-		NULL,                    // Não tem menus, NULL
-		hInstance,               // Handle da aplicação
-		NULL);                   // Usado com múltiplas janelas, NULL
+		L"WindowClass1",            // Nome da classe da janela
+		L"Hello World in Win32",    // Título da janela
+		WS_OVERLAPPEDWINDOW,        // Estilo da janela
+		450,                        // Posição X
+		300,                        // Posição Y
+		800,                        // Largura da janela
+		600,                        // Altura da janela
+		NULL,                       // Não tem janela-pai, NULL
+		NULL,                       // Não tem menus, NULL
+		hInstance,                  // Handle da aplicação
+		NULL);                      // Usado com múltiplas janelas, NULL
 
 	// Exibe a janela na tela
-	ShowWindow(hWnd, nCmdShow);
+	ShowWindow(hWnd, nCmdShow);	
 
 	// Entra no loop principal
 	// Espera pela próxima mensagem na fila e armezena o resultado em 'msg'
@@ -68,6 +68,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 		// Envia a mensagem para a função WindowProc
 		DispatchMessage(&msg);
+		
+		// Verifica se é hora de fechar
+		if (msg.message == WM_QUIT)
+			break;		
 	}
 
 	// Saindo do loop retorna este parâmetro da mensagem WM_QUIT para o Windows
