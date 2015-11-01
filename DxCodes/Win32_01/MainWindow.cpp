@@ -1,3 +1,11 @@
+/*
+* Copyright © 2015, Fernando Vellozo <fernando.vellozo@live.com>
+* Todos os diretos reservados.
+*
+* Atenção: Código criado para fins de estudo podendo sofrer alterações.
+*/
+
+
 #include <windows.h>
 #include <windowsx.h>
 
@@ -43,10 +51,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		300,                     // Posição Y
 		500,                     // Largura da janela
 		400,                     // Altura da janela
-		NULL,					 // Não tem janela-pai, NULL
-		NULL,					 // Não tem menus, NULL
-		hInstance,				 // Handle da aplicação
-		NULL);					 // Usado com múltiplas janelas, NULL
+		NULL,                    // Não tem janela-pai, NULL
+		NULL,                    // Não tem menus, NULL
+		hInstance,               // Handle da aplicação
+		NULL);                   // Usado com múltiplas janelas, NULL
 
 	// Exibe a janela na tela
 	ShowWindow(hWnd, nCmdShow);
