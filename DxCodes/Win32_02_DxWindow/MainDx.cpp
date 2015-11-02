@@ -21,11 +21,11 @@ ID3D10RenderTargetView* rtv; // Apontador para o render target
 IDXGISwapChain* swapchain;   // Apontador para classe de controle do Backbuffer
 
 							 // Assinatura das funções
-void InitD3D(HWND hWnd); // Configura e inicializa o Direct3D
-void Clean3D3(void);     // Fecha o Direct3D e libera a memória usada
-void Render(void);       // Desenha o frame do jogo
+void InitD3D(HWND hWnd);     // Configura e inicializa o Direct3D
+void Clean3D3(void);         // Fecha o Direct3D e libera a memória usada
+void Render(void);           // Desenha o frame do jogo
 
-						 // A assinatura da função WindowProc
+// A assinatura da função WindowProc
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 // Ponto inicial de todo programa Windows
@@ -72,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		hInstance,                  // Handle da aplicação
 		NULL);                      // Usado com múltiplas janelas, NULL
 
-									// Exibe a janela na tela
+	// Exibe a janela na tela
 	ShowWindow(hWnd, nCmdShow);
 
 	// Configura e Inicializa o Direct3D
@@ -110,13 +110,13 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 	{
 		// Está mensagem é enviada quando a janela é destruida 
 		//(ex: quando o usuário clica no botão fechar)
-	case WM_DESTROY:
-	{
-		// Fecha a aplicação
-		PostQuitMessage(0);
-		return 0;
-	}
-	break;
+		case WM_DESTROY:
+		{
+			// Fecha a aplicação
+			PostQuitMessage(0);
+			return 0;
+		}
+		break;
 	}
 
 	// Manipula as outras mensagens que não 'tratamos'
@@ -151,8 +151,9 @@ void InitD3D(HWND hWnd)
 		&device);
 
 	// Pega o endereço do back buffer e usa ele para criar o render target
-	ID3D10Texture2D* pBackBuffer;
-	swapchain->GetBuffer(0, __uuidof(ID3D10Texture2D), (LPVOID*)&pBackBuffer);
+	ID3D10Texture2D* pBackBuffer;	
+	swapchain->GetBuffer(0, __uuidof(ID3D10Texture2D), // __uuidof = Recupera o GUID vinculado à expressão
+						(LPVOID*)&pBackBuffer);
 	device->CreateRenderTargetView(pBackBuffer, NULL, &rtv);
 	pBackBuffer->Release();
 
